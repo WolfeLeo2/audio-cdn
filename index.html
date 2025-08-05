@@ -64,6 +64,39 @@
             font-size: 0.9rem;
             color: #666;
         }
+
+        .api-links {
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .api-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .api-link:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .stats {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #4CAF50;
+        }
     </style>
 </head>
 <body>
@@ -72,6 +105,18 @@
         <p>This is a dedicated Content Delivery Network for audio files</p>
         <p>Serving the <span class="app-name">Mirei</span> application</p>
         <div class="cdn-badge">AUDIO CDN</div>
+        
+        <div class="stats">
+            <strong>Available Collections:</strong>
+            <br>📁 Bedroom Pop: 31 tracks
+            <br>🎵 Lofi: 1 track
+        </div>
+
+        <div class="api-links">
+            <a href="/api/bedroompop.json" class="api-link">📋 Bedroom Pop API</a>
+            <a href="/bedroompop/" class="api-link">📂 Browse Bedroom Pop Files</a>
+        </div>
+
         <p class="footer">Optimized for high-performance audio streaming</p>
     </div>
 </body>

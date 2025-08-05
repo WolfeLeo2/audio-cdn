@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bedroom Pop Collection - Mirei Audio CDN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .stats {
+            text-align: center;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .track-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1rem;
+        }
+
+        .track-item {
+            background: white;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .track-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .artist {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .download-link {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .download-link:hover {
+            background: #45a049;
+        }
+
+        .copy-url {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s ease;
+        }
+
+        .copy-url:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to CDN Home</a>
+        
+        <h1>🎵 Bedroom Pop Collection</h1>
+        
+        <div class="stats">
+            <strong>31 tracks available</strong> • High-quality MP3 format
+        </div>
+
+        <div class="track-grid">
+            <div class="track-item">
+                <div class="artist">Abbey Glover</div>
+                <div class="title">I Wish You Liked Girls</div>
+                <a href="Abbey Glover - I Wish You Liked Girls.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Abbey Glover - I Wish You Liked Girls.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Albert Posis</div>
+                <div class="title">Home</div>
+                <a href="Albert Posis - Home.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Albert Posis - Home.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Albert Posis</div>
+                <div class="title">Serendipity</div>
+                <a href="Albert Posis - Serendipity.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Albert Posis - Serendipity.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Banes World</div>
+                <div class="title">Drowsy</div>
+                <a href="Banes World - Drowsy.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Banes World - Drowsy.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">beabadoobee</div>
+                <div class="title">Glue Song</div>
+                <a href="beabadoobee - Glue Song.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('beabadoobee - Glue Song.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">beabadoobee</div>
+                <div class="title">the perfect pair</div>
+                <a href="beabadoobee - the perfect pair.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('beabadoobee - the perfect pair.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">beabadoobee, Clairo</div>
+                <div class="title">Glue Song (feat. Clairo)</div>
+                <a href="beabadoobee, Clairo - Glue Song (feat. Clairo).mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('beabadoobee, Clairo - Glue Song (feat. Clairo).mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Billie Eilish</div>
+                <div class="title">L'AMOUR DE MA VIE</div>
+                <a href="Billie Eilish - L'AMOUR DE MA VIE.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Billie Eilish - L\'AMOUR DE MA VIE.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Clairo</div>
+                <div class="title">Pretty Girl</div>
+                <a href="Clairo - Pretty Girl.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Clairo - Pretty Girl.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Clairo</div>
+                <div class="title">Sofia</div>
+                <a href="Clairo - Sofia.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Clairo - Sofia.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Current Blue</div>
+                <div class="title">fever dream</div>
+                <a href="Current Blue - fever dream.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Current Blue - fever dream.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Current Blue</div>
+                <div class="title">Los Santos</div>
+                <a href="Current Blue - Los Santos.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Current Blue - Los Santos.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Delorians</div>
+                <div class="title">I Love You So</div>
+                <a href="Delorians - I Love You So.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Delorians - I Love You So.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Faye Webster</div>
+                <div class="title">I Know You</div>
+                <a href="Faye Webster - I Know You.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Faye Webster - I Know You.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Faye Webster</div>
+                <div class="title">In A Good Way</div>
+                <a href="Faye Webster - In A Good Way.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Faye Webster - In A Good Way.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Her's</div>
+                <div class="title">What Once Was</div>
+                <a href="Her's - What Once Was.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Her\'s - What Once Was.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Joji</div>
+                <div class="title">SLOW DANCING IN THE DARK</div>
+                <a href="Joji - SLOW DANCING IN THE DARK.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Joji - SLOW DANCING IN THE DARK.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">kaido</div>
+                <div class="title">recluse</div>
+                <a href="kaido - recluse.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('kaido - recluse.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Mac DeMarco</div>
+                <div class="title">Watching Him Fade Away</div>
+                <a href="Mac DeMarco - Watching Him Fade Away.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Mac DeMarco - Watching Him Fade Away.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Malcolm Todd</div>
+                <div class="title">Roommates</div>
+                <a href="Malcolm Todd - Roommates.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Malcolm Todd - Roommates.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Mexican Slum Rats</div>
+                <div class="title">Sunday</div>
+                <a href="Mexican Slum Rats - Sunday.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Mexican Slum Rats - Sunday.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Near Tears</div>
+                <div class="title">Jaded</div>
+                <a href="Near Tears - Jaded.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Near Tears - Jaded.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">quinnie</div>
+                <div class="title">touch tank</div>
+                <a href="quinnie - touch tank.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('quinnie - touch tank.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Shayne Orok</div>
+                <div class="title">I Wish You Love</div>
+                <a href="Shayne Orok - I Wish You Love.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Shayne Orok - I Wish You Love.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Strawberry Guy</div>
+                <div class="title">Mrs Magic</div>
+                <a href="Strawberry Guy - Mrs Magic.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Strawberry Guy - Mrs Magic.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">The Careful Ones</div>
+                <div class="title">Matrimone</div>
+                <a href="The Careful Ones - Matrimone.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('The Careful Ones - Matrimone.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">The Careful Ones</div>
+                <div class="title">Paper Knees</div>
+                <a href="The Careful Ones - Paper Knees.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('The Careful Ones - Paper Knees.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">The Careful Ones</div>
+                <div class="title">Parallax</div>
+                <a href="The Careful Ones - Parallax.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('The Careful Ones - Parallax.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">The Marías</div>
+                <div class="title">Heavy</div>
+                <a href="The Marías - Heavy.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('The Marías - Heavy.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Tigers in the Sky</div>
+                <div class="title">Baby Blue</div>
+                <a href="Tigers in the Sky - Baby Blue.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Tigers in the Sky - Baby Blue.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">TV Girl</div>
+                <div class="title">Lovers Rock</div>
+                <a href="TV Girl - Lovers Rock.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('TV Girl - Lovers Rock.mp3')">📋 Copy URL</button>
+            </div>
+
+            <div class="track-item">
+                <div class="artist">Vacations</div>
+                <div class="title">Telephones</div>
+                <a href="Vacations - Telephones.mp3" class="download-link" download>⬇ Download</a>
+                <button class="copy-url" onclick="copyUrl('Vacations - Telephones.mp3')">📋 Copy URL</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyUrl(filename) {
+            const baseUrl = window.location.origin;
+            const fullUrl = `${baseUrl}/bedroompop/${encodeURIComponent(filename)}`;
+            
+            navigator.clipboard.writeText(fullUrl).then(function() {
+                // Create a temporary notification
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✓ Copied!';
+                button.style.background = '#4CAF50';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#2196F3';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
