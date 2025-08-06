@@ -117,7 +117,87 @@
         .copy-url:hover {
             background: #1976D2;
         }
+
+        .album-art {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+            float: left;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .album-art-placeholder {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            margin-right: 1rem;
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .track-info {
+            overflow: hidden;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .track-item {
+            background: white;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .metadata-toggle {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            margin: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .metadata-toggle:hover {
+            background: #ff5252;
+        }
+
+        .metadata-toggle.active {
+            background: #4CAF50;
+        }
     </style>
+    <!-- Include musicmetadata library for extracting metadata -->
+    <script src="https://cdn.jsdelivr.net/npm/music-metadata-browser@2.5.10/dist/music-metadata-browser.umd.js"></script>
 </head>
 <body>
     <div class="container">
@@ -127,242 +207,130 @@
         
         <div class="stats">
             <strong>31 tracks available</strong> • High-quality MP3 format
+            <br>
+            <button class="metadata-toggle" onclick="toggleMetadata()">🎨 Load Album Art</button>
         </div>
 
-        <div class="track-grid">
-            <div class="track-item">
-                <div class="artist">Abbey Glover</div>
-                <div class="title">I Wish You Liked Girls</div>
-                <a href="Abbey Glover - I Wish You Liked Girls.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Abbey Glover - I Wish You Liked Girls.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Albert Posis</div>
-                <div class="title">Home</div>
-                <a href="Albert Posis - Home.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Albert Posis - Home.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Albert Posis</div>
-                <div class="title">Serendipity</div>
-                <a href="Albert Posis - Serendipity.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Albert Posis - Serendipity.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Banes World</div>
-                <div class="title">Drowsy</div>
-                <a href="Banes World - Drowsy.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Banes World - Drowsy.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">beabadoobee</div>
-                <div class="title">Glue Song</div>
-                <a href="beabadoobee - Glue Song.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('beabadoobee - Glue Song.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">beabadoobee</div>
-                <div class="title">the perfect pair</div>
-                <a href="beabadoobee - the perfect pair.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('beabadoobee - the perfect pair.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">beabadoobee, Clairo</div>
-                <div class="title">Glue Song (feat. Clairo)</div>
-                <a href="beabadoobee, Clairo - Glue Song (feat. Clairo).mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('beabadoobee, Clairo - Glue Song (feat. Clairo).mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Billie Eilish</div>
-                <div class="title">L'AMOUR DE MA VIE</div>
-                <a href="Billie Eilish - L'AMOUR DE MA VIE.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Billie Eilish - L\'AMOUR DE MA VIE.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Clairo</div>
-                <div class="title">Pretty Girl</div>
-                <a href="Clairo - Pretty Girl.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Clairo - Pretty Girl.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Clairo</div>
-                <div class="title">Sofia</div>
-                <a href="Clairo - Sofia.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Clairo - Sofia.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Current Blue</div>
-                <div class="title">fever dream</div>
-                <a href="Current Blue - fever dream.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Current Blue - fever dream.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Current Blue</div>
-                <div class="title">Los Santos</div>
-                <a href="Current Blue - Los Santos.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Current Blue - Los Santos.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Delorians</div>
-                <div class="title">I Love You So</div>
-                <a href="Delorians - I Love You So.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Delorians - I Love You So.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Faye Webster</div>
-                <div class="title">I Know You</div>
-                <a href="Faye Webster - I Know You.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Faye Webster - I Know You.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Faye Webster</div>
-                <div class="title">In A Good Way</div>
-                <a href="Faye Webster - In A Good Way.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Faye Webster - In A Good Way.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Her's</div>
-                <div class="title">What Once Was</div>
-                <a href="Her's - What Once Was.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Her\'s - What Once Was.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Joji</div>
-                <div class="title">SLOW DANCING IN THE DARK</div>
-                <a href="Joji - SLOW DANCING IN THE DARK.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Joji - SLOW DANCING IN THE DARK.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">kaido</div>
-                <div class="title">recluse</div>
-                <a href="kaido - recluse.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('kaido - recluse.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Mac DeMarco</div>
-                <div class="title">Watching Him Fade Away</div>
-                <a href="Mac DeMarco - Watching Him Fade Away.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Mac DeMarco - Watching Him Fade Away.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Malcolm Todd</div>
-                <div class="title">Roommates</div>
-                <a href="Malcolm Todd - Roommates.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Malcolm Todd - Roommates.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Mexican Slum Rats</div>
-                <div class="title">Sunday</div>
-                <a href="Mexican Slum Rats - Sunday.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Mexican Slum Rats - Sunday.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Near Tears</div>
-                <div class="title">Jaded</div>
-                <a href="Near Tears - Jaded.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Near Tears - Jaded.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">quinnie</div>
-                <div class="title">touch tank</div>
-                <a href="quinnie - touch tank.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('quinnie - touch tank.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Shayne Orok</div>
-                <div class="title">I Wish You Love</div>
-                <a href="Shayne Orok - I Wish You Love.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Shayne Orok - I Wish You Love.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Strawberry Guy</div>
-                <div class="title">Mrs Magic</div>
-                <a href="Strawberry Guy - Mrs Magic.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Strawberry Guy - Mrs Magic.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">The Careful Ones</div>
-                <div class="title">Matrimone</div>
-                <a href="The Careful Ones - Matrimone.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('The Careful Ones - Matrimone.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">The Careful Ones</div>
-                <div class="title">Paper Knees</div>
-                <a href="The Careful Ones - Paper Knees.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('The Careful Ones - Paper Knees.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">The Careful Ones</div>
-                <div class="title">Parallax</div>
-                <a href="The Careful Ones - Parallax.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('The Careful Ones - Parallax.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">The Marías</div>
-                <div class="title">Heavy</div>
-                <a href="The Marías - Heavy.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('The Marías - Heavy.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Tigers in the Sky</div>
-                <div class="title">Baby Blue</div>
-                <a href="Tigers in the Sky - Baby Blue.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Tigers in the Sky - Baby Blue.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">TV Girl</div>
-                <div class="title">Lovers Rock</div>
-                <a href="TV Girl - Lovers Rock.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('TV Girl - Lovers Rock.mp3')">📋 Copy URL</button>
-            </div>
-
-            <div class="track-item">
-                <div class="artist">Vacations</div>
-                <div class="title">Telephones</div>
-                <a href="Vacations - Telephones.mp3" class="download-link" download>⬇ Download</a>
-                <button class="copy-url" onclick="copyUrl('Vacations - Telephones.mp3')">📋 Copy URL</button>
-            </div>
-        </div>
+        <div class="track-grid" id="trackGrid"></div>
     </div>
 
     <script>
+        let metadataLoaded = false;
+        const tracks = [
+            { artist: "Abbey Glover", title: "I Wish You Liked Girls", filename: "Abbey Glover - I Wish You Liked Girls.mp3" },
+            { artist: "Albert Posis", title: "Home", filename: "Albert Posis - Home.mp3" },
+            { artist: "Albert Posis", title: "Serendipity", filename: "Albert Posis - Serendipity.mp3" },
+            { artist: "Banes World", title: "Drowsy", filename: "Banes World - Drowsy.mp3" },
+            { artist: "beabadoobee", title: "Glue Song", filename: "beabadoobee - Glue Song.mp3" },
+            { artist: "beabadoobee", title: "the perfect pair", filename: "beabadoobee - the perfect pair.mp3" },
+            { artist: "beabadoobee, Clairo", title: "Glue Song (feat. Clairo)", filename: "beabadoobee, Clairo - Glue Song (feat. Clairo).mp3" },
+            { artist: "Billie Eilish", title: "L'AMOUR DE MA VIE", filename: "Billie Eilish - L'AMOUR DE MA VIE.mp3" },
+            { artist: "Clairo", title: "Pretty Girl", filename: "Clairo - Pretty Girl.mp3" },
+            { artist: "Clairo", title: "Sofia", filename: "Clairo - Sofia.mp3" },
+            { artist: "Current Blue", title: "fever dream", filename: "Current Blue - fever dream.mp3" },
+            { artist: "Current Blue", title: "Los Santos", filename: "Current Blue - Los Santos.mp3" },
+            { artist: "Delorians", title: "I Love You So", filename: "Delorians - I Love You So.mp3" },
+            { artist: "Faye Webster", title: "I Know You", filename: "Faye Webster - I Know You.mp3" },
+            { artist: "Faye Webster", title: "In A Good Way", filename: "Faye Webster - In A Good Way.mp3" },
+            { artist: "Her's", title: "What Once Was", filename: "Her's - What Once Was.mp3" },
+            { artist: "Joji", title: "SLOW DANCING IN THE DARK", filename: "Joji - SLOW DANCING IN THE DARK.mp3" },
+            { artist: "kaido", title: "recluse", filename: "kaido - recluse.mp3" },
+            { artist: "Mac DeMarco", title: "Watching Him Fade Away", filename: "Mac DeMarco - Watching Him Fade Away.mp3" },
+            { artist: "Malcolm Todd", title: "Roommates", filename: "Malcolm Todd - Roommates.mp3" },
+            { artist: "Mexican Slum Rats", title: "Sunday", filename: "Mexican Slum Rats - Sunday.mp3" },
+            { artist: "Near Tears", title: "Jaded", filename: "Near Tears - Jaded.mp3" },
+            { artist: "quinnie", title: "touch tank", filename: "quinnie - touch tank.mp3" },
+            { artist: "Shayne Orok", title: "I Wish You Love", filename: "Shayne Orok - I Wish You Love.mp3" },
+            { artist: "Strawberry Guy", title: "Mrs Magic", filename: "Strawberry Guy - Mrs Magic.mp3" },
+            { artist: "The Careful Ones", title: "Matrimone", filename: "The Careful Ones - Matrimone.mp3" },
+            { artist: "The Careful Ones", title: "Paper Knees", filename: "The Careful Ones - Paper Knees.mp3" },
+            { artist: "The Careful Ones", title: "Parallax", filename: "The Careful Ones - Parallax.mp3" },
+            { artist: "The Marías", title: "Heavy", filename: "The Marías - Heavy.mp3" },
+            { artist: "Tigers in the Sky", title: "Baby Blue", filename: "Tigers in the Sky - Baby Blue.mp3" },
+            { artist: "TV Girl", title: "Lovers Rock", filename: "TV Girl - Lovers Rock.mp3" },
+            { artist: "Vacations", title: "Telephones", filename: "Vacations - Telephones.mp3" }
+        ];
+
+        function renderTracks(withMetadata = false) {
+            const trackGrid = document.getElementById('trackGrid');
+            trackGrid.innerHTML = '';
+
+            tracks.forEach((track, index) => {
+                const trackItem = document.createElement('div');
+                trackItem.className = 'track-item';
+                trackItem.id = `track-${index}`;
+
+                const albumArtHtml = withMetadata ? 
+                    `<div class="album-art-placeholder" id="art-${index}">🎵</div>` : '';
+
+                trackItem.innerHTML = `
+                    ${albumArtHtml}
+                    <div class="track-info">
+                        <div class="artist">${track.artist}</div>
+                        <div class="title">${track.title}</div>
+                        <a href="${encodeURIComponent(track.filename)}" class="download-link" download>⬇ Download</a>
+                        <button class="copy-url" onclick="copyUrl('${track.filename.replace(/'/g, "\\'")}')">📋 Copy URL</button>
+                        ${withMetadata ? `<div class="loading-spinner" id="spinner-${index}"></div>` : ''}
+                    </div>
+                `;
+
+                trackGrid.appendChild(trackItem);
+
+                if (withMetadata) {
+                    loadMetadata(track.filename, index);
+                }
+            });
+        }
+
+        async function loadMetadata(filename, index) {
+            try {
+                const response = await fetch(encodeURIComponent(filename));
+                const buffer = await response.arrayBuffer();
+                const metadata = await musicMetadata.parseBuffer(new Uint8Array(buffer));
+
+                const spinner = document.getElementById(`spinner-${index}`);
+                if (spinner) spinner.style.display = 'none';
+
+                if (metadata.common.picture && metadata.common.picture.length > 0) {
+                    const picture = metadata.common.picture[0];
+                    const blob = new Blob([picture.data], { type: picture.format });
+                    const imageUrl = URL.createObjectURL(blob);
+
+                    const artElement = document.getElementById(`art-${index}`);
+                    if (artElement) {
+                        artElement.innerHTML = `<img src="${imageUrl}" alt="Album Art" class="album-art">`;
+                        artElement.className = '';
+                    }
+                }
+            } catch (error) {
+                console.log(`Could not load metadata for ${filename}:`, error);
+                const spinner = document.getElementById(`spinner-${index}`);
+                if (spinner) spinner.style.display = 'none';
+            }
+        }
+
+        function toggleMetadata() {
+            const button = document.querySelector('.metadata-toggle');
+            
+            if (!metadataLoaded) {
+                button.textContent = '🔄 Loading...';
+                button.disabled = true;
+                renderTracks(true);
+                metadataLoaded = true;
+                
+                setTimeout(() => {
+                    button.textContent = '✓ Album Art Loaded';
+                    button.className = 'metadata-toggle active';
+                    button.disabled = false;
+                }, 1000);
+            }
+        }
+
         function copyUrl(filename) {
             const baseUrl = window.location.origin;
             const fullUrl = `${baseUrl}/bedroompop/${encodeURIComponent(filename)}`;
             
             navigator.clipboard.writeText(fullUrl).then(function() {
-                // Create a temporary notification
                 const button = event.target;
                 const originalText = button.textContent;
                 button.textContent = '✓ Copied!';
@@ -376,6 +344,9 @@
                 console.error('Could not copy text: ', err);
             });
         }
+
+        // Initialize with basic view
+        renderTracks(false);
     </script>
 </body>
 </html>

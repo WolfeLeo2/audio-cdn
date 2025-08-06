@@ -1,0 +1,19 @@
+{
+  "name": "audio-cdn-metadata-extractor",
+  "version": "1.0.0",
+  "description": "Extract metadata from MP3 files for audio CDN",
+  "main": "extract-metadata.js",
+  "scripts": {
+    "extract": "node extract-metadata.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "music-metadata": "^7.14.0",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "keywords": ["music", "metadata", "mp3", "cdn"],
+  "author": "Your Name",
+  "license": "MIT"
+}
