@@ -55,67 +55,32 @@
             margin-bottom: 2rem;
         }
 
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+            color: #667eea;
+        }
+
         .track-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
         }
 
         .track-item {
             background: white;
             border: 1px solid #e1e5e9;
-            border-radius: 8px;
-            padding: 1rem;
+            border-radius: 12px;
+            padding: 1.5rem;
             transition: all 0.3s ease;
+            display: flex;
+            gap: 1rem;
         }
 
         .track-item:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .artist {
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .title {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .download-link {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
-        }
-
-        .download-link:hover {
-            background: #45a049;
-        }
-
-        .copy-url {
-            display: inline-block;
-            background: #2196F3;
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-left: 0.5rem;
-            cursor: pointer;
-            border: none;
-            transition: background 0.3s ease;
-        }
-
-        .copy-url:hover {
-            background: #1976D2;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
         }
 
         .album-art {
@@ -123,9 +88,8 @@
             height: 80px;
             object-fit: cover;
             border-radius: 8px;
-            margin-right: 1rem;
-            float: left;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
         }
 
         .album-art-placeholder {
@@ -133,50 +97,92 @@
             height: 80px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 8px;
-            margin-right: 1rem;
-            float: left;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 24px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
         }
 
         .track-info {
-            overflow: hidden;
-            min-height: 80px;
+            flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            min-height: 80px;
         }
 
-        .track-item {
-            background: white;
-            border: 1px solid #e1e5e9;
-            border-radius: 8px;
-            padding: 1rem;
-            transition: all 0.3s ease;
-            overflow: hidden;
+        .track-details {
+            flex: 1;
         }
 
-        .loading-spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .artist {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .title {
+            color: #333;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .album {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .meta-info {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.8rem;
+        }
+
+        .track-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .download-link {
             display: inline-block;
-            margin-left: 0.5rem;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .download-link:hover {
+            background: #45a049;
+            transform: translateY(-1px);
         }
 
-        .metadata-toggle {
+        .copy-url {
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .copy-url:hover {
+            background: #1976D2;
+            transform: translateY(-1px);
+        }
+
+        .view-mode-toggle {
             background: #ff6b6b;
             color: white;
             border: none;
@@ -188,16 +194,38 @@
             transition: background 0.3s ease;
         }
 
-        .metadata-toggle:hover {
+        .view-mode-toggle:hover {
             background: #ff5252;
         }
 
-        .metadata-toggle.active {
+        .view-mode-toggle.loaded {
             background: #4CAF50;
         }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #c62828;
+        }
+
+        @media (max-width: 768px) {
+            .track-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .track-item {
+                padding: 1rem;
+            }
+            
+            .album-art, .album-art-placeholder {
+                width: 60px;
+                height: 60px;
+            }
+        }
     </style>
-    <!-- Include musicmetadata library for extracting metadata -->
-    <script src="https://cdn.jsdelivr.net/npm/music-metadata-browser@2.5.10/dist/music-metadata-browser.umd.js"></script>
 </head>
 <body>
     <div class="container">
@@ -206,123 +234,124 @@
         <h1>🎵 Bedroom Pop Collection</h1>
         
         <div class="stats">
-            <strong>31 tracks available</strong> • High-quality MP3 format
+            <strong id="track-count">Loading tracks...</strong> • High-quality MP3 format
             <br>
-            <button class="metadata-toggle" onclick="toggleMetadata()">🎨 Load Album Art</button>
+            <button class="view-mode-toggle" onclick="toggleAlbumArt()">🎨 Load Album Art</button>
         </div>
 
-        <div class="track-grid" id="trackGrid"></div>
+        <div id="loading" class="loading">
+            🎵 Loading track data...
+        </div>
+
+        <div id="error" class="error-message" style="display: none;">
+            ❌ Error loading track data. Please check the console for details.
+        </div>
+
+        <div class="track-grid" id="trackGrid" style="display: none;"></div>
     </div>
 
     <script>
-        let metadataLoaded = false;
-        const tracks = [
-            { artist: "Abbey Glover", title: "I Wish You Liked Girls", filename: "Abbey Glover - I Wish You Liked Girls.mp3" },
-            { artist: "Albert Posis", title: "Home", filename: "Albert Posis - Home.mp3" },
-            { artist: "Albert Posis", title: "Serendipity", filename: "Albert Posis - Serendipity.mp3" },
-            { artist: "Banes World", title: "Drowsy", filename: "Banes World - Drowsy.mp3" },
-            { artist: "beabadoobee", title: "Glue Song", filename: "beabadoobee - Glue Song.mp3" },
-            { artist: "beabadoobee", title: "the perfect pair", filename: "beabadoobee - the perfect pair.mp3" },
-            { artist: "beabadoobee, Clairo", title: "Glue Song (feat. Clairo)", filename: "beabadoobee, Clairo - Glue Song (feat. Clairo).mp3" },
-            { artist: "Billie Eilish", title: "L'AMOUR DE MA VIE", filename: "Billie Eilish - L'AMOUR DE MA VIE.mp3" },
-            { artist: "Clairo", title: "Pretty Girl", filename: "Clairo - Pretty Girl.mp3" },
-            { artist: "Clairo", title: "Sofia", filename: "Clairo - Sofia.mp3" },
-            { artist: "Current Blue", title: "fever dream", filename: "Current Blue - fever dream.mp3" },
-            { artist: "Current Blue", title: "Los Santos", filename: "Current Blue - Los Santos.mp3" },
-            { artist: "Delorians", title: "I Love You So", filename: "Delorians - I Love You So.mp3" },
-            { artist: "Faye Webster", title: "I Know You", filename: "Faye Webster - I Know You.mp3" },
-            { artist: "Faye Webster", title: "In A Good Way", filename: "Faye Webster - In A Good Way.mp3" },
-            { artist: "Her's", title: "What Once Was", filename: "Her's - What Once Was.mp3" },
-            { artist: "Joji", title: "SLOW DANCING IN THE DARK", filename: "Joji - SLOW DANCING IN THE DARK.mp3" },
-            { artist: "kaido", title: "recluse", filename: "kaido - recluse.mp3" },
-            { artist: "Mac DeMarco", title: "Watching Him Fade Away", filename: "Mac DeMarco - Watching Him Fade Away.mp3" },
-            { artist: "Malcolm Todd", title: "Roommates", filename: "Malcolm Todd - Roommates.mp3" },
-            { artist: "Mexican Slum Rats", title: "Sunday", filename: "Mexican Slum Rats - Sunday.mp3" },
-            { artist: "Near Tears", title: "Jaded", filename: "Near Tears - Jaded.mp3" },
-            { artist: "quinnie", title: "touch tank", filename: "quinnie - touch tank.mp3" },
-            { artist: "Shayne Orok", title: "I Wish You Love", filename: "Shayne Orok - I Wish You Love.mp3" },
-            { artist: "Strawberry Guy", title: "Mrs Magic", filename: "Strawberry Guy - Mrs Magic.mp3" },
-            { artist: "The Careful Ones", title: "Matrimone", filename: "The Careful Ones - Matrimone.mp3" },
-            { artist: "The Careful Ones", title: "Paper Knees", filename: "The Careful Ones - Paper Knees.mp3" },
-            { artist: "The Careful Ones", title: "Parallax", filename: "The Careful Ones - Parallax.mp3" },
-            { artist: "The Marías", title: "Heavy", filename: "The Marías - Heavy.mp3" },
-            { artist: "Tigers in the Sky", title: "Baby Blue", filename: "Tigers in the Sky - Baby Blue.mp3" },
-            { artist: "TV Girl", title: "Lovers Rock", filename: "TV Girl - Lovers Rock.mp3" },
-            { artist: "Vacations", title: "Telephones", filename: "Vacations - Telephones.mp3" }
-        ];
+        let trackData = null;
+        let albumArtLoaded = false;
 
-        function renderTracks(withMetadata = false) {
+        async function loadTrackData() {
+            try {
+                const response = await fetch('/api/bedroompop.json');
+                if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                
+                trackData = await response.json();
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('track-count').textContent = 
+                    `${trackData.total_tracks} tracks available`;
+                
+                renderTracks();
+                document.getElementById('trackGrid').style.display = 'grid';
+                
+            } catch (error) {
+                console.error('Error loading track data:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').innerHTML = 
+                    `❌ Error loading track data: ${error.message}`;
+            }
+        }
+
+        function formatDuration(seconds) {
+            if (!seconds) return 'Unknown';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function formatBitrate(bitrate) {
+            if (!bitrate) return 'Unknown';
+            return `${Math.round(bitrate / 1000)}kbps`;
+        }
+
+        function renderTracks() {
             const trackGrid = document.getElementById('trackGrid');
             trackGrid.innerHTML = '';
 
-            tracks.forEach((track, index) => {
+            if (!trackData || !trackData.tracks) {
+                trackGrid.innerHTML = '<div class="error-message">No tracks found</div>';
+                return;
+            }
+
+            trackData.tracks.forEach((track, index) => {
                 const trackItem = document.createElement('div');
                 trackItem.className = 'track-item';
                 trackItem.id = `track-${index}`;
 
-                const albumArtHtml = withMetadata ? 
-                    `<div class="album-art-placeholder" id="art-${index}">🎵</div>` : '';
+                const metadata = track.metadata || {};
+                const albumArt = albumArtLoaded && metadata.albumArt ? 
+                    `<img src="data:${metadata.albumArt.format};base64,${metadata.albumArt.data}" 
+                          alt="Album Art" class="album-art">` :
+                    `<div class="album-art-placeholder">🎵</div>`;
 
                 trackItem.innerHTML = `
-                    ${albumArtHtml}
+                    ${albumArt}
                     <div class="track-info">
-                        <div class="artist">${track.artist}</div>
-                        <div class="title">${track.title}</div>
-                        <a href="${encodeURIComponent(track.filename)}" class="download-link" download>⬇ Download</a>
-                        <button class="copy-url" onclick="copyUrl('${track.filename.replace(/'/g, "\\'")}')">📋 Copy URL</button>
-                        ${withMetadata ? `<div class="loading-spinner" id="spinner-${index}"></div>` : ''}
+                        <div class="track-details">
+                            <div class="artist">${track.artist}</div>
+                            <div class="title">${track.title}</div>
+                            ${metadata.album ? `<div class="album">💿 ${metadata.album}</div>` : ''}
+                            <div class="meta-info">
+                                ⏱️ ${formatDuration(metadata.duration)} • 
+                                🎵 ${formatBitrate(metadata.bitrate)}
+                                ${metadata.year ? ` • 📅 ${metadata.year}` : ''}
+                            </div>
+                        </div>
+                        <div class="track-actions">
+                            <a href="${encodeURIComponent(track.filename)}" class="download-link" download>
+                                ⬇️ Download
+                            </a>
+                            <button class="copy-url" onclick="copyUrl('${track.filename.replace(/'/g, "\\'")}')">
+                                📋 Copy URL
+                            </button>
+                        </div>
                     </div>
                 `;
 
                 trackGrid.appendChild(trackItem);
-
-                if (withMetadata) {
-                    loadMetadata(track.filename, index);
-                }
             });
         }
 
-        async function loadMetadata(filename, index) {
-            try {
-                const response = await fetch(encodeURIComponent(filename));
-                const buffer = await response.arrayBuffer();
-                const metadata = await musicMetadata.parseBuffer(new Uint8Array(buffer));
-
-                const spinner = document.getElementById(`spinner-${index}`);
-                if (spinner) spinner.style.display = 'none';
-
-                if (metadata.common.picture && metadata.common.picture.length > 0) {
-                    const picture = metadata.common.picture[0];
-                    const blob = new Blob([picture.data], { type: picture.format });
-                    const imageUrl = URL.createObjectURL(blob);
-
-                    const artElement = document.getElementById(`art-${index}`);
-                    if (artElement) {
-                        artElement.innerHTML = `<img src="${imageUrl}" alt="Album Art" class="album-art">`;
-                        artElement.className = '';
-                    }
-                }
-            } catch (error) {
-                console.log(`Could not load metadata for ${filename}:`, error);
-                const spinner = document.getElementById(`spinner-${index}`);
-                if (spinner) spinner.style.display = 'none';
-            }
-        }
-
-        function toggleMetadata() {
-            const button = document.querySelector('.metadata-toggle');
+        function toggleAlbumArt() {
+            const button = document.querySelector('.view-mode-toggle');
             
-            if (!metadataLoaded) {
-                button.textContent = '🔄 Loading...';
+            if (!albumArtLoaded) {
+                button.textContent = '🔄 Loading Album Art...';
                 button.disabled = true;
-                renderTracks(true);
-                metadataLoaded = true;
                 
+                // Small delay to show loading state
                 setTimeout(() => {
-                    button.textContent = '✓ Album Art Loaded';
-                    button.className = 'metadata-toggle active';
+                    albumArtLoaded = true;
+                    renderTracks();
+                    button.textContent = '✅ Album Art Loaded';
+                    button.className = 'view-mode-toggle loaded';
                     button.disabled = false;
-                }, 1000);
+                }, 500);
             }
         }
 
@@ -333,7 +362,7 @@
             navigator.clipboard.writeText(fullUrl).then(function() {
                 const button = event.target;
                 const originalText = button.textContent;
-                button.textContent = '✓ Copied!';
+                button.textContent = '✅ Copied!';
                 button.style.background = '#4CAF50';
                 
                 setTimeout(() => {
@@ -345,8 +374,8 @@
             });
         }
 
-        // Initialize with basic view
-        renderTracks(false);
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', loadTrackData);
     </script>
 </body>
 </html>
