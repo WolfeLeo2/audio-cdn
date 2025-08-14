@@ -3,9 +3,9 @@ const path = require('path');
 const { parseFile } = require('music-metadata');
 
 // Configuration
-const BEDROOMPOP_DIR = './bedroompop';
+const MOODY_DIR = './moody';
 const API_DIR = './api';
-const OUTPUT_FILE = path.join(API_DIR, 'bedroompop.json');
+const OUTPUT_FILE = path.join(API_DIR, 'moody.json');
 
 async function extractMetadata(filePath) {
     try {
@@ -54,19 +54,19 @@ async function processAllTracks() {
         // Ensure API directory exists
         await fs.mkdir(API_DIR, { recursive: true });
         
-        // Read all MP3 files from bedroompop directory
-        const files = await fs.readdir(BEDROOMPOP_DIR);
-        const mp3Files = files.filter(file => file.toLowerCase().endsWith('.mp3'));
+        // Read all M4A files from moody directory
+        const files = await fs.readdir(MOODY_DIR);
+        const m4aFiles = files.filter(file => file.toLowerCase().endsWith('.m4a'));
         
-        console.log(`Found ${mp3Files.length} MP3 files to process...`);
+        console.log(`Found ${m4aFiles.length} M4A files to process...`);
         
         const tracks = [];
         
-        for (const filename of mp3Files) {
-            const filePath = path.join(BEDROOMPOP_DIR, filename);
+        for (const filename of m4aFiles) {
+            const filePath = path.join(MOODY_DIR, filename);
             
             // Extract artist and title from filename (fallback)
-            const nameWithoutExt = filename.replace('.mp3', '');
+            const nameWithoutExt = filename.replace(/\.m4a$/i, '');
             const parts = nameWithoutExt.split(' - ');
             const fallbackArtist = parts[0] || 'Unknown Artist';
             const fallbackTitle = parts[1] || nameWithoutExt;
@@ -84,7 +84,7 @@ async function processAllTracks() {
                 artist: artist,
                 title: title,
                 filename: filename,
-                url: `/bedroompop/${filename}`,
+                url: `/moody/${filename}`,
                 metadata: metadata || {
                     title: title,
                     artist: artist,
@@ -112,9 +112,9 @@ async function processAllTracks() {
         
         // Create the final JSON structure
         const jsonData = {
-            genre: "bedroompop",
+            genre: "moody",
             total_tracks: tracks.length,
-            base_url: "/bedroompop/",
+            base_url: "/moody/",
             last_updated: new Date().toISOString(),
             tracks: tracks
         };
